@@ -6,8 +6,14 @@ package gr.pgiotis.BittorrentDigitalPreservation.strategies;
 
 /**
  *
- * @author panagiotis
+ * @author Panagiotis Giotis <giotis.p@gmail.com>
  */
-public class PhoneStrategy {
+public class SaveToServerStrategy {
+    
+    public static void STSStrategy(String info_hash){
+
+        
+        
+    }
     
 }

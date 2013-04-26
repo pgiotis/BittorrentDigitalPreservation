@@ -10,4 +10,11 @@ package gr.pgiotis.BittorrentDigitalPreservation.strategies;
  */
 public class AlertStrategy {
     
+    public static void AlertStrategy(String info_hash){
+        
+        System.out.println("sto log tha grafei alert to arxeio tade einai katw apo to orio.");
+        
+        
+    }
+    
 }

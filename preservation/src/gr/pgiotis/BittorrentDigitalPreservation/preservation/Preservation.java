@@ -5,8 +5,8 @@
 package gr.pgiotis.BittorrentDigitalPreservation.preservation;
 
 /**
- *
- * @author panagiotis
+ * 
+ * @author Panagiotis Giotis <giotis.p@gmail.com>
  */
 public class Preservation {
 
@@ -16,16 +16,16 @@ public class Preservation {
     public static void main(String[] args) {
         // TODO code application logic here
         
-        System.out.println("preservation starts");
+        //read args from commandline or put the default values.
+        
         //connect to DB tracker
         
         //query= select info_hash,filename,seeders,strategy,startdate from namemap
         
         //for each record
             
-            //if (nowDate -startdate)>5
-                //query= select count(*) from x+info_hash where status='seeders'
-                //if query< threshold
+            //query= select count(*) from x+info_hash where status='seeders'
+            //if query< threshold
                     //call strategy
         
         
