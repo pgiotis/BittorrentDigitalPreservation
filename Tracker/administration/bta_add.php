@@ -509,10 +509,10 @@ if (isset($_POST["addtorrent"])) {
         else
             $urlmd5 = "";
 
-        if (isset($_POST["urlinfo"]))
-            $urlinfo = $_POST["urlinfo"];
+        if (isset($_POST["mailinfo"]))
+            $mailinfo = $_POST["mailinfo"];
         else
-            $urlinfo = "";
+            $mailinfo = "";
 
         if (isset($_POST["crcinfo"]))
             $crcinfo = $_POST["crcinfo"];
@@ -603,7 +603,7 @@ if (isset($_POST["addtorrent"])) {
                 $urlmirror = addslashes(htmlentities($urlmirror));
                 $urlsfv = addslashes(htmlentities($urlsfv));
                 $urlmd5 = addslashes(htmlentities($urlmd5));
-                $urlinfo = addslashes(htmlentities($urlinfo));
+                $mailinfo = addslashes(htmlentities($mailinfo));
                 $shortdesc = addslashes(htmlentities($shortdesc));
                 $crcinfo = addslashes(htmlentities($crcinfo));
             } else {
@@ -619,7 +619,7 @@ if (isset($_POST["addtorrent"])) {
                 $urlmirror = addslashes(htmlentities(stripslashes($urlmirror)));
                 $urlsfv = addslashes(htmlentities(stripslashes($urlsfv)));
                 $urlmd5 = addslashes(htmlentities(stripslashes($urlmd5)));
-                $urlinfo = addslashes(htmlentities(stripslashes($urlinfo)));
+                $mailinfo = addslashes(htmlentities(stripslashes($mailinfo)));
                 $shortdesc = addslashes(htmlentities(stripslashes($shortdesc)));
                 $crcinfo = addslashes(htmlentities(stripslashes($crcinfo)));
             }
@@ -679,7 +679,7 @@ if (isset($_POST["addtorrent"])) {
 									\"$category\", 
 									\"$urlsfv\", 
 									\"$urlmd5\", 
-									\"$urlinfo\",
+									\"$mailinfo\",
 									\"$removeurldate\",
 									\"$hidetorrentdate\",
 									\"$addusername\",
@@ -856,7 +856,13 @@ if ($addError) {
                                         </TR>
                                         <TR>
                                             <TD></TD>
-                                            <TD><INPUT TYPE="radio" NAME="strategy" SIZE=40 MAXLENGTH=200 VALUE="3" >3 "by phone."&nbsp;&nbsp;</TD>
+                                            <TD><INPUT TYPE="radio" NAME="strategy" SIZE=40 MAXLENGTH=200 VALUE="3" >3 "by save on Preservation server."&nbsp;&nbsp;</TD>
+                                        </TR>
+                                         <TR>
+                                            <TD>Contact mail:</TD>
+                                            <TD><INPUT TYPE=text NAME="mailinfo" SIZE=40 MAXLENGTH=200 <?php if ($addError) {
+                                            echo "VALUE=\"${_POST["mailinfo"]}\"";
+                                            } ?>>&nbsp;&nbsp;<FONT style="font-family:arial;color:red;"> <b>Give a contact mail in case of  need it by preservation strategy.</b></FONT></TD>
                                         </TR>
                                         <TR>
                                             <TD COLSPAN=3 ALIGN="center"><U>The following options are optional.</U><BR>&nbsp;</TD>
@@ -890,12 +896,6 @@ if ($addError) {
                                             <TD><INPUT TYPE=text NAME="md5" SIZE=40 MAXLENGTH=200 <?php if ($addError) {
                                             echo "VALUE=\"${_POST["md5"]}\"";
                                         } ?>>&nbsp;&nbsp;<FONT SIZE=-1><B>(Optional)</B></FONT> Enter the URL to the MD5 file.</TD>
-                                        </TR>
-                                        <TR>
-                                            <TD>Info URL:</TD>
-                                            <TD><INPUT TYPE=text NAME="urlinfo" SIZE=40 MAXLENGTH=200 <?php if ($addError) {
-                                            echo "VALUE=\"${_POST["urlinfo"]}\"";
-                                        } ?>>&nbsp;&nbsp;<FONT SIZE=-1><B>(Optional)</B></FONT> Enter the URL to an information link.</TD>
                                         </TR>
                                         <TR>
                                             <TD>Description:</TD>
