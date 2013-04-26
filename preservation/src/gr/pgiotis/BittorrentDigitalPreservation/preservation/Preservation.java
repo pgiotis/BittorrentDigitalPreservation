@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package preservation;
+package gr.pgiotis.BittorrentDigitalPreservation.preservation;
 
 /**
  *
@@ -26,7 +26,7 @@ public class Preservation {
             //if (nowDate -startdate)>5
                 //query= select count(*) from x+info_hash where status='seeders'
                 //if query< threshold
-                    //execute strategy
+                    //call strategy
         
         
         
