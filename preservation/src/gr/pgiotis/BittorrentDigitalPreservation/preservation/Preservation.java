@@ -23,11 +23,7 @@ public class Preservation {
      */
     public static void main(String[] args) {
 
-        // TODO code application logic here
-
-        //read args from commandline or put the default values.
-
-
+        
         try {
             //connect to DB
             Class.forName("com.mysql.jdbc.Driver");
@@ -90,10 +86,10 @@ public class Preservation {
 
                             break;
                         case 2:
-                            Strategies.EmailStrategy(InfoHashList.get(i));
+                            Strategies.EmailStrategy(InfoHashList.get(i),st);
                             break;
                         case 3:
-                            Strategies.SaveStrategy(InfoHashList.get(i));
+                            Strategies.SaveStrategy(InfoHashList.get(i),st);
                             break;
                     }
 
