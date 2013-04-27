@@ -848,7 +848,7 @@ if ($addError) {
                                         </TR>
                                         <TR>
                                             <TD>Choose a Digital Preservation Strategy: </TD>
-                                            <TD><INPUT TYPE="radio" NAME="strategy" SIZE=40 MAXLENGTH=200 VALUE="1" >1 "by alert."&nbsp;&nbsp;</TD>
+                                            <TD><INPUT TYPE="radio" NAME="strategy" SIZE=40 MAXLENGTH=200 VALUE="1" CHECKED>1 "by alert."&nbsp;&nbsp;</TD>
                                         </TR>
                                         <TR>
                                             <TD></TD>
