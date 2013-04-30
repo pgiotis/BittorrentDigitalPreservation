@@ -315,7 +315,7 @@
 	 * 'http://myweb.org/tracker/tracker.php/announce'. The administration
 	 * interface uses this to check if torrents are yours so it MUST be set.
 	 */
-	$GLOBALS["my_tracker_announce"] = "http://localhost/tracker/tracker.php/announce";
+	$GLOBALS["my_tracker_announce"] = "http://83.212.121.154/tracker/tracker.php/announce";
 
 	/*
 	 * Allow external torrents to be added to this tracker?
