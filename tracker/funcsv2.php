@@ -936,7 +936,7 @@
 
 			if ($outputHTML) {
 				echo "</TD>\r\n";
-                                echo "\t\t<TD $cellBG><a href='http://localhost/tracker/FileHistory/logPresenter.php?id=$hash'> here</a> ";
+                                echo "\t\t<TD $cellBG><a href='/tracker/FileHistory/logPresenter.php?id=$hash'> here</a> ";
                                 echo "</TD>\r\n";
 				echo "\t</TR>\r\n";
 			}
