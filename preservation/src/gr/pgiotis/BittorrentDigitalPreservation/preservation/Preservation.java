@@ -5,12 +5,16 @@
 package gr.pgiotis.BittorrentDigitalPreservation.preservation;
 
 import gr.pgiotis.BittorrentDigitalPreservation.strategies.Strategies;
+import java.io.IOException;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.FileHandler;
+import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 
 /**
  *
@@ -18,12 +22,14 @@ import java.util.logging.Logger;
  */
 public class Preservation {
 
+    static Logger LOGGER = Logger.getLogger(Preservation.class.getName());
+
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        LOGGER.setLevel(Level.FINE);
 
-        
         try {
             //connect to DB
             Class.forName("com.mysql.jdbc.Driver");
@@ -82,18 +88,37 @@ public class Preservation {
                     //Call the current Strategy
                     switch (Integer.parseInt(StrategyList.get(i))) {
                         case 1:
-                            Strategies.AlertStrategy(InfoHashList.get(i));
+                            Strategies.AlertStrategy(InfoHashList.get(i), st);
 
                             break;
                         case 2:
-                            Strategies.EmailStrategy(InfoHashList.get(i),st);
+                            Strategies.EmailStrategy(InfoHashList.get(i), st);
                             break;
-                        case 3:
-                            Strategies.SaveStrategy(InfoHashList.get(i),st);
-                            break;
+
                     }
 
                 }
+                //initialize logger
+                Handler h;
+                try {
+                    h = new FileHandler("./logFiles/" + InfoHashList.get(i) + ".log", true);
+                    SimpleFormatter f = new SimpleFormatter();
+                    
+                    h.setFormatter(f);
+                    LOGGER.addHandler(h);
+
+
+                    //TODO: save info to log file
+                    LOGGER.log(Level.FINE, "=#=#=" + InfoHashList.get(i) + "=#=#=" + PreservationThreshold + "=#=#=" + seeders);
+                    LOGGER.removeHandler(h);
+                } catch (IOException ex) {
+                    Logger.getLogger(Preservation.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SecurityException ex) {
+                    Logger.getLogger(Preservation.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+
+
 
             }
 

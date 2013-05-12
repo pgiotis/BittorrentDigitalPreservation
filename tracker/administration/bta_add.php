@@ -854,10 +854,7 @@ if ($addError) {
                                             <TD></TD>
                                             <TD><INPUT TYPE="radio" NAME="strategy" SIZE=40 MAXLENGTH=200 VALUE="2" >2 "by e-mail."&nbsp;&nbsp;</TD>
                                         </TR>
-                                        <TR>
-                                            <TD></TD>
-                                            <TD><INPUT TYPE="radio" NAME="strategy" SIZE=40 MAXLENGTH=200 VALUE="3" >3 "by save on Preservation server."&nbsp;&nbsp;</TD>
-                                        </TR>
+                                      
                                          <TR>
                                             <TD>Contact mail:</TD>
                                             <TD><INPUT TYPE=text NAME="mailinfo" SIZE=40 MAXLENGTH=200 <?php if ($addError) {

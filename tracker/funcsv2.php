@@ -719,6 +719,7 @@
 			echo "\t<TR>\r\n";
 			echo "\t\t<TD CLASS=\"heading\">Name/Info Hash</TD>\r\n";
 			echo "\t\t<TD CLASS=\"heading\">Size</TD>\r\n";
+                        echo "\t\t<TD CLASS=\"heading\">Threshold</TD>\r\n";
 			echo "\t\t<TD CLASS=\"heading\">UL</TD>\r\n";
 			echo "\t\t<TD CLASS=\"heading\">DL</TD>\r\n";
 			echo "\t\t<TD CLASS=\"heading\">XFER</TD>\r\n";
@@ -726,13 +727,14 @@
 			echo "\t\t<TD CLASS=\"heading\">Avg %<BR>done</TD>\r\n";
 			echo "\t\t<TD CLASS=\"heading\">Stale clients</TD>\r\n";
 			echo "\t\t<TD CLASS=\"heading\">Peer Cache</TD>\r\n";
+                        echo "\t\t<TD CLASS=\"heading\">Statistics</TD>\r\n";
 			echo "\t</TR>\r\n";
 		}
 
 		/*
 		 * OK, grab a list of items to check...
 		 */
-		$recordset = mysql_query("SELECT summary.info_hash, seeds, leechers, dlbytes, speed, avgdone, namemap.filename, namemap.size FROM summary LEFT JOIN namemap ON summary.info_hash = namemap.info_hash WHERE summary.external_torrent = 'N'");
+		$recordset = mysql_query("SELECT summary.info_hash, threshold, seeds, leechers, dlbytes, speed, avgdone, namemap.filename, namemap.size FROM summary LEFT JOIN namemap ON summary.info_hash = namemap.info_hash WHERE summary.external_torrent = 'N'");
 
 		$counter = 0;
 		while ($row = mysql_fetch_row($recordset)) {
@@ -741,8 +743,11 @@
 			 */
 			$cellBG = $classRowBGClr[$counter % 2];
 
-			list($hash, $seeders, $leechers, $bytes, $speed, $avgdone, $filename, $fsize) = $row;
-
+			list($hash, $threshold, $seeders, $leechers, $bytes, $speed, $avgdone, $filename, $fsize) = $row;
+                        if((int)$seeders < (int)$threshold){
+                          $cellBG =  'CLASS="warn"';
+                        }
+                        
 			/*
 			 * Lock tables if needed
 			 */
@@ -763,6 +768,7 @@
 				else
 					echo $hash;
 				echo "</TD>\r\n\t\t<TD $cellBG>$fsize</TD>\r\n";
+                                echo "</TD>\r\n\t\t<TD $cellBG>$threshold</TD>\r\n";
 			}
 
 			if (!$statusresults) {
@@ -816,6 +822,8 @@
 					}
 				}
 			}
+                        
+                        
 
 			/*
 			 * Check the amount transferred
@@ -923,9 +931,13 @@
 					echo "Peer caching disabled";
 				}
 			}
+                        
+                       
 
 			if ($outputHTML) {
 				echo "</TD>\r\n";
+                                echo "\t\t<TD $cellBG><a href='http://localhost/tracker/FileHistory/logPresenter.php?id=$hash'> here</a> ";
+                                echo "</TD>\r\n";
 				echo "\t</TR>\r\n";
 			}
 	

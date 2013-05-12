@@ -276,7 +276,18 @@ td.odd {
 	color: black;
 	background-color: #F9F9F9;
 }
+/*
+ * This is the style used for the odd numbered rows
+ */
+td.warn {
+	font-family: "Times New Roman", sans-serif;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 7pt;
 
+	color: black;
+	background-color: #FF3333;
+}
 /*
  * This is the style used for the even numbered rows
  */
