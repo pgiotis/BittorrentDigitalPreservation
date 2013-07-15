@@ -15,6 +15,7 @@ and open the template in the editor.
         <script type="text/javascript" src="js/prototype.js"></script>
         <script type="text/javascript" src="js/calendarview.js"></script>
         <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+        <link href="css/bootstrap-responsive.css" rel="stylesheet" media="screen">
         <link rel="stylesheet" href="css/calendarview.css">
         <style>
 
@@ -192,11 +193,36 @@ and open the template in the editor.
     </head>
     <body >
         <br>
-        <h1 align="center" class="muted">Welcome to the statistics page.</h1>
+        <h1 align="center" class="muted">Welcome to the statistics page for the 
+            <?php
+$con=mysqli_connect("localhost","tracker","123","tracker");
+// Check connection
+if (mysqli_connect_errno())
+  {
+  echo "Failed to connect to MySQL: " . mysqli_connect_error();
+  }
+
+$result = mysqli_query($con,'select filename from namemap where info_hash="'.$_GET["id"].'"');
+
+while($row = mysqli_fetch_array($result))
+  {
+  echo '<u>'.$row['filename'].'</u>' ;
+ 
+  }
+
+
+
+mysqli_close($con);
+?>   file.</h1>
         <br></br>
 
         <div class="container-fluid">
             <div class="row-fluid">
+           
+                <div class="span9" id="mainoutput"><div id="container" style="width: 100%; height: 400px; margin: 0 auto"></div></div>
+            </div>
+             <div class="row-fluid">
+                 <div class="span2" ></div>
                 <div class="span3" id="leftmenu">
 
                    
@@ -235,8 +261,7 @@ and open the template in the editor.
 
 
                 </div>
-                <div class="span9" id="mainoutput"><div id="container" style="width: 100%; height: 400px; margin: 0 auto"></div></div>
-            </div>
+             </div>
         </div>
 
     </body>

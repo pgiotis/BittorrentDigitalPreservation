@@ -396,5 +396,5 @@
 	 *
 	 * Don't change these unless you know what you are doing.
 	 */
-	$dbhost = "localhost";  $dbuser = "tracker";  $dbpass = "123";  $database = "tracker";
+	$dbhost = "localhost";  $dbuser = "tracker";  $dbpass = "1234";  $database = "tracker";
 ?>
