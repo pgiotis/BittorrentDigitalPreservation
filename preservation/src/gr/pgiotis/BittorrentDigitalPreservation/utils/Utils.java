@@ -30,8 +30,8 @@ public class Utils {
             //set mail setings 
 
             String host = "smtp.gmail.com";
-            String from = "bittorrentdigitalpreservation@gmail.com";
-            String pass = "bdp12345";
+            String from = "testmail@gmail.com";
+            String pass = "testpass";
             Properties props = System.getProperties();
             props.put("mail.smtp.starttls.enable", "true");
             props.put("mail.smtp.host", host);
